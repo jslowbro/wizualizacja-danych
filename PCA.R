@@ -58,3 +58,18 @@ n<-dim(df)[1]#  dla danych len()
 df3<-df[1:(n-14880),]#ucinanie takie głupie ale żeby było widać wykres dalej poprawie
 pcatest <- prcomp(df3, center = TRUE, scale = TRUE)
 biplot(pcatest,scale=0, cex=.7)
+
+
+
+library(ggfortify)
+install.packages('ggfortify')
+autoplot(prcomp(df3), data = df3, colour = 'Class', loadings = TRUE)
+autoplot(prcomp(df3), data =df3, colour = 'Class',
+         loadings = TRUE, loadings.colour = 'blue',
+         loadings.label = TRUE, loadings.label.size = 3)
+t<- read.csv("user_a.csv")
+
+autoplot(prcomp(t), data =t, colour = 'Class',
+         loadings = TRUE, loadings.colour = 'blue',
+         loadings.label = TRUE, loadings.label.size = 3)
+autoplot(prcomp(t), data = t, colour = 'Class')
